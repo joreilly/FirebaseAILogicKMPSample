@@ -1,6 +1,6 @@
 ![kotlin-version](https://img.shields.io/badge/kotlin-2.2.0-blue?logo=kotlin)
 
-# Vertex AI Compose/Kotlin Multiplatform Sample
+# Firebase AI Logic Compose/Kotlin Multiplatform Sample
 
 Compose/Kotlin Multiplatform sample that makes use of the [Firebase Vertex AI SDK](https://firebase.google.com/products/vertex-ai-in-firebase).
 The iOS and Android clients share the same Compose UI code but delegate to platform specific Swift and Kotlin code
@@ -41,4 +41,4 @@ The project uses the following multiplatform dependencies
 *  StarWars (https://github.com/joreilly/StarWars)
 *  WordMasterKMP (https://github.com/joreilly/WordMasterKMP)
 *  Chip-8 (https://github.com/joreilly/chip-8)
-*  Vertex-AI-KMP (https://github.com/joreilly/VertexAI-KMP-Sample)
+*  FirebaseAILogicKMPSample (https://github.com/joreilly/FirebaseAILogicKMPSample)

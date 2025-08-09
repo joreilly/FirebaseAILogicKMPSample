@@ -1,4 +1,4 @@
-rootProject.name = "VertexAI-KMP-Sample"
+rootProject.name = "FirebaseAILogicKMPSample"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

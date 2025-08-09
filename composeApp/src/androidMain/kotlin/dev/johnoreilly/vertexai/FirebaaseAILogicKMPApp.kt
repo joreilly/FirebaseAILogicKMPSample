@@ -5,7 +5,7 @@ import com.google.firebase.FirebaseApp
 import dev.johnoreilly.vertexai.di.initialiseKoin
 
 
-class VertexAIKMPApp : Application() {
+class FirebaaseAILogicKMPApp : Application() {
     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)

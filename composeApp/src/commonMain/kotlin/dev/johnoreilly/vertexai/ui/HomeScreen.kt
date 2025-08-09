@@ -43,11 +43,11 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
 import com.mikepenz.markdown.m3.Markdown
+import firebaseailogickmpsample.composeapp.generated.resources.Res
+import firebaseailogickmpsample.composeapp.generated.resources.generate_content
+import firebaseailogickmpsample.composeapp.generated.resources.generate_image
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
-import vertexai_kmp_sample.composeapp.generated.resources.Res
-import vertexai_kmp_sample.composeapp.generated.resources.generate_content
-import vertexai_kmp_sample.composeapp.generated.resources.generate_image
 
 @Composable
 fun HomeScreen() {
