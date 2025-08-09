@@ -18,7 +18,7 @@ fun App() {
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(title = {
-                    Text("VertexAI-KMP")
+                    Text("FirebaseAILogicKMPSampe")
                 })
             }
         ) {

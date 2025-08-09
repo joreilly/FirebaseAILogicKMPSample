@@ -29,7 +29,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
 
             implementation(project.dependencies.platform(libs.firebase.bom))
-            implementation(libs.firebase.vertexai)
+            implementation(libs.firebase.ai)
         }
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization)

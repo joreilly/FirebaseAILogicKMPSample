@@ -1,7 +1,6 @@
 import UIKit
 import SwiftUI
 import ComposeApp
-import FirebaseVertexAI
 
 
 struct ComposeView: UIViewControllerRepresentable {

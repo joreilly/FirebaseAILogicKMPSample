@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "1046936014894",
     "project_id": "vertex-ai-kmp",
-    "storage_bucket": "vertex-ai-kmp.appspot.com"
+    "storage_bucket": "vertex-ai-kmp.firebasestorage.app"
   },
   "client": [
     {

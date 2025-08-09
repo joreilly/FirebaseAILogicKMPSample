@@ -1,11 +1,11 @@
 import ComposeApp
-import FirebaseVertexAI
+import FirebaseAI
 import Foundation
 
 class GenerativeModelIOS: ComposeApp.GenerativeModel {
     static let shared = GenerativeModelIOS()
     
-    let vertex = VertexAI.vertexAI()
+    let ai = FirebaseAI.firebaseAI(backend: .googleAI())
     
     let jsonSchema = Schema.array(
       items: .object(
@@ -17,8 +17,8 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
     )
     
     func __generateTextContent(prompt: String) async throws -> String? {
-        let model = vertex.generativeModel(
-            modelName: "gemini-1.5-flash"
+        let model = ai.generativeModel(
+            modelName: "gemini-2.5-flash"
         )
 
         return try await model.generateContent(prompt).text
@@ -26,8 +26,8 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
     
     
     func __generateJsonContent(prompt: String) async throws -> String? {
-        let model = vertex.generativeModel(
-            modelName: "gemini-1.5-flash",
+        let model = ai.generativeModel(
+            modelName: "gemini-2.5-flash",
             generationConfig: GenerationConfig(
                 responseMIMEType: "application/json",
                 responseSchema: jsonSchema
@@ -39,7 +39,7 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
 
     
     func __generateImage(prompt: String) async throws -> KotlinByteArray? {
-        let model = vertex.imagenModel(modelName: "imagen-3.0-generate-002")
+        let model = ai.imagenModel(modelName: "imagen-3.0-generate-002")
         
         let response = try await model.generateImages(prompt: prompt)
         
