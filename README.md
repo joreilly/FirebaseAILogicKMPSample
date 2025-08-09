@@ -22,9 +22,7 @@ The project uses the following multiplatform dependencies
 
 
 ## Screenshots
-
-
-<img width="736" alt="vertex_sample_screenshots" src="https://github.com/user-attachments/assets/6237e066-dd8a-427e-9fb6-63ef8ed619df" />
+<img width="749" height="490" alt="Screenshot 2025-08-09 at 15 49 21" src="https://github.com/user-attachments/assets/866c6bc1-91a9-49cf-aaf3-e7921217216f" />
 
 
 
