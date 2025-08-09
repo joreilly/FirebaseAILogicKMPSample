@@ -2,7 +2,7 @@
 
 # Firebase AI Logic Compose/Kotlin Multiplatform Sample
 
-Compose/Kotlin Multiplatform sample that makes use of the [Firebase Vertex AI SDK](https://firebase.google.com/products/vertex-ai-in-firebase).
+Compose/Kotlin Multiplatform sample that makes use of the [Firebase AI Logic SDK](https://firebase.google.com/products/firebase-ai-logic).
 The iOS and Android clients share the same Compose UI code but delegate to platform specific Swift and Kotlin code
 to invoke the respective SDKs.  Currently generates markdown text, configured json or images (using Imagegen 3)
 
