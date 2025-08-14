@@ -41,7 +41,7 @@ class GenerativeModelAndroid : GenerativeModel {
     @OptIn(PublicPreviewAPI::class)
     override suspend fun generateImage(prompt: String): ByteArray? {
         val imageModel = Firebase.ai.imagenModel(
-            modelName = "imagen-3.0-generate-002"
+            modelName = "imagen-4.0-fast-generate-001"
         )
         val imageResponse = imageModel.generateImages(prompt)
         return if (imageResponse.images.isNotEmpty()) {

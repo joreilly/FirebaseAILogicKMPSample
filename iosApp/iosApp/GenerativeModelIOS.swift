@@ -39,7 +39,7 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
 
     
     func __generateImage(prompt: String) async throws -> KotlinByteArray? {
-        let model = ai.imagenModel(modelName: "imagen-3.0-generate-002")
+        let model = ai.imagenModel(modelName: "imagen-4.0-fast-generate-001")
         
         let response = try await model.generateImages(prompt: prompt)
         
