@@ -23,6 +23,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -59,7 +60,7 @@ fun HomeScreen() {
         mutableStateOf(TextFieldValue())
     }
 
-    val generateJson = remember { mutableStateOf(false) }
+    var generateJson by rememberSaveable { mutableStateOf(false) }
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val focusRequester = remember { FocusRequester() }
@@ -76,7 +77,7 @@ fun HomeScreen() {
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(bottom = 4.dp)
         )
-        
+
         OutlinedTextField(
             value = prompt,
             onValueChange = { prompt = it },
@@ -87,7 +88,7 @@ fun HomeScreen() {
                 .height(120.dp),
             shape = RoundedCornerShape(12.dp)
         )
-        
+
         Spacer(modifier = Modifier.height(12.dp))
 
         Row(
@@ -100,7 +101,16 @@ fun HomeScreen() {
                 fontWeight = FontWeight.Medium
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Switch(checked = generateJson.value, onCheckedChange = { generateJson.value = it })
+            Switch(checked = generateJson, onCheckedChange = { generateJson = it },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+                    uncheckedThumbColor = MaterialTheme.colorScheme.primary,
+                    uncheckedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+                    checkedBorderColor = MaterialTheme.colorScheme.primary,
+                    uncheckedBorderColor = MaterialTheme.colorScheme.primary
+                )
+            )
         }
 
         Row(
@@ -110,7 +120,7 @@ fun HomeScreen() {
                 onClick = {
                     if (prompt.text.isNotBlank()) {
                         keyboardController?.hide()
-                        viewModel.generateContent(prompt.text, generateJson = generateJson.value)
+                        viewModel.generateContent(prompt.text, generateJson = generateJson)
                     }
                 },
                 modifier = Modifier.weight(1f),
@@ -120,7 +130,7 @@ fun HomeScreen() {
             }
 
             Spacer(Modifier.width(16.dp))
-            
+
             Button(
                 onClick = {
                     if (prompt.text.isNotBlank()) {
@@ -134,7 +144,7 @@ fun HomeScreen() {
                 Text(stringResource(Res.string.generate_image))
             }
         }
-        
+
         Spacer(modifier = Modifier.height(16.dp))
 
         ResponseView(uiState, prompt.text)
@@ -161,7 +171,10 @@ fun ResponseView(uiState: GenerativeModelUIState, prompt: String) {
             ElevatedCard(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
-                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                )
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
@@ -171,7 +184,7 @@ fun ResponseView(uiState: GenerativeModelUIState, prompt: String) {
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
-                    
+
                     if (uiState.entityContent != null) {
                         LazyColumn {
                             items(uiState.entityContent) { item ->
@@ -182,17 +195,17 @@ fun ResponseView(uiState: GenerativeModelUIState, prompt: String) {
                                     shape = RoundedCornerShape(8.dp)
                                 ) {
                                     ListItem(
-                                        headlineContent = { 
+                                        headlineContent = {
                                             Text(
                                                 text = item.name,
                                                 fontWeight = FontWeight.Medium
-                                            ) 
+                                            )
                                         },
-                                        supportingContent = { 
+                                        supportingContent = {
                                             Text(
                                                 text = item.country,
                                                 style = MaterialTheme.typography.bodyMedium
-                                            ) 
+                                            )
                                         }
                                     )
                                 }

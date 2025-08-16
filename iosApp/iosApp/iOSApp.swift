@@ -7,7 +7,7 @@ import FirebaseCore
 struct iOSApp: App {
     init() {
         FirebaseApp.configure()
-        initialiseKoin(generativeModel: GenerativeModelIOS.shared)
+        // initialiseKoin()
     }
 
     var body: some Scene {
