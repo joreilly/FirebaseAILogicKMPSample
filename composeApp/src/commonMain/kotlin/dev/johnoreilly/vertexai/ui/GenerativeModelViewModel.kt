@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.johnoreilly.vertexai.GenerativeModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -32,35 +33,51 @@ class GenerativeModelViewModel(private val generativeModel: GenerativeModel) : V
     val uiState = MutableStateFlow<GenerativeModelUIState>(GenerativeModelUIState.Initial)
 
     fun generateContent(prompt: String, generateJson: Boolean) {
-        uiState.value = GenerativeModelUIState.Loading
+        uiState.update {
+            GenerativeModelUIState.Loading
+        }
         viewModelScope.launch {
             try {
-                uiState.value = if (generateJson) {
+                if (generateJson) {
                     val response = generativeModel.generateJsonContent(prompt)
                     if (response != null) {
                         val entities = Json.decodeFromString<List<Entity>>(response)
-                        GenerativeModelUIState.Success(entityContent = entities)
+                        uiState.update { GenerativeModelUIState.Success(entityContent = entities) }
                     } else {
-                        GenerativeModelUIState.Error("Error generating content")
+                        uiState.update {
+                            GenerativeModelUIState.Error("Error generating content")
+                        }
                     }
                 } else {
                     val response = generativeModel.generateTextContent(prompt)
-                    GenerativeModelUIState.Success(textContent = response)
+                    uiState.update { GenerativeModelUIState.Success(textContent = response) }
                 }
             } catch (e: Exception) {
-                GenerativeModelUIState.Error(e.message ?: "Error generating content")
+                uiState.update {
+                    GenerativeModelUIState.Error(
+                        e.message ?: "Error generating content"
+                    )
+                }
             }
         }
     }
 
     fun generateImage(prompt: String) {
-        uiState.value = GenerativeModelUIState.Loading
+        uiState.update {
+            GenerativeModelUIState.Loading
+        }
         viewModelScope.launch {
-            uiState.value = try {
+            try {
                 val imageData = generativeModel.generateImage(prompt)
-                 GenerativeModelUIState.Success(imageData = imageData)
+                uiState.update {
+                    GenerativeModelUIState.Success(imageData = imageData)
+                }
             } catch (e: Exception) {
-                GenerativeModelUIState.Error(e.message ?: "Error generating content")
+                uiState.update {
+                    GenerativeModelUIState.Error(
+                        e.message ?: "Error generating content"
+                    )
+                }
             }
         }
     }
