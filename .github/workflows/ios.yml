@@ -1,0 +1,30 @@
+name: iOS CI
+
+on: pull_request
+
+# Cancel any current or previous job from the same PR
+concurrency:
+  group: ios-${{ github.head_ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 21
+
+      - name: Set Xcode Version 16.4
+        shell: bash
+        run: |
+          xcodes select 16.4
+
+      - name: Build iOS app
+        run: xcodebuild -allowProvisioningUpdates -allowProvisioningUpdates -workspace iosApp/iosApp.xcodeproj/project.xcworkspace -configuration Debug -scheme iosApp -sdk iphoneos -destination name='iPhone 16'
+
+
+
