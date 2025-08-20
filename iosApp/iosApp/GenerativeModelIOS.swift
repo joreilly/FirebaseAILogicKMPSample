@@ -18,7 +18,7 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
     
     func __generateTextContent(prompt: String) async throws -> String? {
         let model = ai.generativeModel(
-            modelName: "gemini-2.5-flash"
+            modelName: GEMINI_MODEL
         )
 
         return try await model.generateContent(prompt).text
@@ -27,7 +27,7 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
     
     func __generateJsonContent(prompt: String) async throws -> String? {
         let model = ai.generativeModel(
-            modelName: "gemini-2.5-flash",
+            modelName: GEMINI_MODEL,
             generationConfig: GenerationConfig(
                 responseMIMEType: "application/json",
                 responseSchema: jsonSchema
@@ -39,7 +39,7 @@ class GenerativeModelIOS: ComposeApp.GenerativeModel {
 
     
     func __generateImage(prompt: String) async throws -> KotlinByteArray? {
-        let model = ai.imagenModel(modelName: "imagen-4.0-fast-generate-001")
+        let model = ai.imagenModel(modelName: IMAGE_MODEL)
         
         let response = try await model.generateImages(prompt: prompt)
         

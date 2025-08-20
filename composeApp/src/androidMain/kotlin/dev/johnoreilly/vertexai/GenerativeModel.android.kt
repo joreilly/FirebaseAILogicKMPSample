@@ -6,6 +6,8 @@ import com.google.firebase.ai.type.Schema
 import com.google.firebase.ai.type.generationConfig
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
+import dev.johnoreilly.vertexai.util.GEMINI_MODEL
+import dev.johnoreilly.vertexai.util.IMAGE_MODEL
 
 
 class GenerativeModelAndroid : GenerativeModel {
@@ -20,7 +22,7 @@ class GenerativeModelAndroid : GenerativeModel {
 
     override suspend fun generateTextContent(prompt: String): String? {
         val generativeModel = Firebase.ai(backend = GenerativeBackend.googleAI()).generativeModel(
-            modelName = "gemini-2.5-flash"
+            modelName = GEMINI_MODEL
         )
 
         return generativeModel.generateContent(prompt).text
@@ -28,7 +30,7 @@ class GenerativeModelAndroid : GenerativeModel {
 
     override suspend fun generateJsonContent(prompt: String): String? {
         val generativeModel = Firebase.ai.generativeModel(
-            modelName = "gemini-2.5-flash",
+            modelName = GEMINI_MODEL,
             generationConfig = generationConfig {
                 responseMimeType = "application/json"
                 responseSchema = jsonSchema
@@ -41,7 +43,7 @@ class GenerativeModelAndroid : GenerativeModel {
     @OptIn(PublicPreviewAPI::class)
     override suspend fun generateImage(prompt: String): ByteArray? {
         val imageModel = Firebase.ai.imagenModel(
-            modelName = "imagen-4.0-fast-generate-001"
+            modelName = IMAGE_MODEL
         )
         val imageResponse = imageModel.generateImages(prompt)
         return if (imageResponse.images.isNotEmpty()) {
