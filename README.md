@@ -1,4 +1,4 @@
-![kotlin-version](https://img.shields.io/badge/kotlin-2.2.0-blue?logo=kotlin)
+![kotlin-version](https://img.shields.io/badge/kotlin-2.2.10-blue?logo=kotlin)
 
 # Firebase AI Logic Compose/Kotlin Multiplatform Sample
 
