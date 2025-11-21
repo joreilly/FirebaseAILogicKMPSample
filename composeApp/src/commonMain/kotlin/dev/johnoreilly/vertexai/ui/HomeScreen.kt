@@ -216,11 +216,6 @@ fun ResponseView(uiState: GenerativeModelUIState, prompt: String) {
                             Markdown(uiState.textContent)
                         }
                     } else if (uiState.imageData != null) {
-                        Text(
-                            text = "Generated Image",
-                            style = MaterialTheme.typography.labelLarge,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
                         Card(
                             shape = RoundedCornerShape(8.dp),
                             modifier = Modifier.fillMaxWidth()
