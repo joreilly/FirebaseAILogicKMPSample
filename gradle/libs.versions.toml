@@ -9,7 +9,7 @@ googleServices = "4.4.4"
 koin = "4.1.1"
 kotlin = "2.2.21"
 kotlinx-serialization = "1.9.0"
-markdownRenderer = "0.38.1"
+markdownRenderer = "0.43.0"
 composeLifecyleRuntime="2.9.6"
 skie = "0.10.8"
 
