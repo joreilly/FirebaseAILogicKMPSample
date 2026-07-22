@@ -1,4 +1,4 @@
-![kotlin-version](https://img.shields.io/badge/kotlin-2.2.10-blue?logo=kotlin)
+![kotlin-version](https://img.shields.io/badge/kotlin-2.4.0-blue?logo=kotlin)
 
 # Firebase AI Logic Compose/Kotlin Multiplatform Sample
 
@@ -14,6 +14,19 @@ The project uses the following multiplatform dependencies
 - [Koin](https://github.com/InsertKoinIO/koin) 
 - [Markdown Renderer](https://github.com/mikepenz/multiplatform-markdown-renderer)
 - [Coil](https://github.com/coil-kt/coil)
+
+
+## Setup
+
+This project talks to Firebase AI Logic, so you need to connect it to your own Firebase project.
+The Firebase config files are not committed — add your own:
+
+- Android: place `google-services.json` in the `androidApp/` directory.
+- iOS: place `GoogleService-Info.plist` in the `iosApp/` directory.
+
+Then enable **Firebase AI Logic** (Gemini Developer API backend) for your Firebase project in the
+[Firebase console](https://console.firebase.google.com/). No API key is set in code — the app
+authenticates through your Firebase project via those config files.
 
 
 ### Related posts

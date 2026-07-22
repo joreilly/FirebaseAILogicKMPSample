@@ -1,18 +1,32 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidKmpLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
-    alias(libs.plugins.googleServices)
     alias(libs.plugins.skie)
 }
 
 kotlin {
     jvmToolchain(17)
 
+    android {
+        namespace = "dev.johnoreilly.vertexai.shared"
+        compileSdk = 37
+        minSdk = 24
+
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
+
+        androidResources {
+            enable = true
+        }
+    }
+
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -21,13 +35,9 @@ kotlin {
             isStatic = true
         }
     }
-    androidTarget()
 
     sourceSets {
         androidMain.dependencies {
-            implementation(libs.androidx.compose.ui.tooling.preview)
-            implementation(libs.androidx.activity.compose)
-
             implementation(project.dependencies.platform(libs.firebase.bom))
             implementation(libs.firebase.ai)
         }
@@ -51,37 +61,3 @@ kotlin {
         }
     }
 }
-
-android {
-    namespace = "dev.johnoreilly.vertexai"
-    compileSdk = 36
-
-    defaultConfig {
-        applicationId = "dev.johnoreilly.vertexai"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    
-    // Improve build performance
-    buildFeatures {
-        buildConfig = false
-    }
-}
-
-dependencies {
-    debugImplementation(libs.androidx.compose.ui.tooling)
-}
-
-
