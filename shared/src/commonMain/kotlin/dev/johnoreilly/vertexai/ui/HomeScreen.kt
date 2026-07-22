@@ -46,9 +46,9 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
 import com.mikepenz.markdown.m3.Markdown
-import firebaseailogickmpsample.composeapp.generated.resources.Res
-import firebaseailogickmpsample.composeapp.generated.resources.generate_content
-import firebaseailogickmpsample.composeapp.generated.resources.generate_image
+import firebaseailogickmpsample.shared.generated.resources.Res
+import firebaseailogickmpsample.shared.generated.resources.generate_content
+import firebaseailogickmpsample.shared.generated.resources.generate_image
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
