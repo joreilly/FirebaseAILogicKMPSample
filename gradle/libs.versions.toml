@@ -11,7 +11,7 @@ kotlin = "2.4.0"
 kotlinx-serialization = "1.11.0"
 markdownRenderer = "0.43.0"
 composeLifecyleRuntime="2.11.0"
-skie = "0.10.13"
+skie = "0.10.14"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
