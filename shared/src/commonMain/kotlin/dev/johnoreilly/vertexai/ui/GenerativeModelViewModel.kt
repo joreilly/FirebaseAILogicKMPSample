@@ -11,12 +11,12 @@ import kotlinx.serialization.json.Json
 
 
 @Serializable
-data class Entity(
+internal data class Entity(
     val name: String,
     val country: String
 )
 
-sealed class GenerativeModelUIState {
+internal sealed class GenerativeModelUIState {
     data object Initial : GenerativeModelUIState()
     data object Loading : GenerativeModelUIState()
     data class Success(
@@ -29,7 +29,7 @@ sealed class GenerativeModelUIState {
 }
 
 
-class GenerativeModelViewModel(private val generativeModel: GenerativeModel) : ViewModel() {
+internal class GenerativeModelViewModel(private val generativeModel: GenerativeModel) : ViewModel() {
     val uiState = MutableStateFlow<GenerativeModelUIState>(GenerativeModelUIState.Initial)
 
     fun generateContent(prompt: String, generateJson: Boolean) {

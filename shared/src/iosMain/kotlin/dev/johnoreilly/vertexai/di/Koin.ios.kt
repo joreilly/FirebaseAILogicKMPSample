@@ -5,7 +5,7 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 
-fun initialiseKoin(generativeModel: GenerativeModel) {
+public fun initialiseKoin(generativeModel: GenerativeModel) {
     startKoin {
         modules(
             commonModule,

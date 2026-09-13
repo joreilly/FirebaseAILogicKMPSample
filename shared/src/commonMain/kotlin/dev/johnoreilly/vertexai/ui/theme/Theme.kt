@@ -104,7 +104,7 @@ private val AppTypography = Typography(
 )
 
 @Composable
-fun FirebaseAILogicTheme(
+internal fun FirebaseAILogicTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

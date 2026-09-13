@@ -5,29 +5,29 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
 // Firebase AI Logic inspired colors
-val FirebaseBlue = Color(0xFF1A73E8)
-val FirebaseLightBlue = Color(0xFF4285F4)
-val FirebaseAmber = Color(0xFFF57C00)
-val FirebaseRed = Color(0xFFEA4335)
-val FirebaseGreen = Color(0xFF34A853)
-val FirebaseYellow = Color(0xFFFBBC04)
+internal val FirebaseBlue = Color(0xFF1A73E8)
+internal val FirebaseLightBlue = Color(0xFF4285F4)
+internal val FirebaseAmber = Color(0xFFF57C00)
+internal val FirebaseRed = Color(0xFFEA4335)
+internal val FirebaseGreen = Color(0xFF34A853)
+internal val FirebaseYellow = Color(0xFFFBBC04)
 
 // Light theme background colors
-val LightBackground = Color(0xFFF8F9FA)
-val LightSurface = Color(0xFFFFFFFF)
-val LightSurfaceVariant = Color(0xFFE1E3E1)
+internal val LightBackground = Color(0xFFF8F9FA)
+internal val LightSurface = Color(0xFFFFFFFF)
+internal val LightSurfaceVariant = Color(0xFFE1E3E1)
 
 // Dark theme background colors
-val DarkBackground = Color(0xFF1F1F1F)
-val DarkSurface = Color(0xFF121212)
-val DarkSurfaceVariant = Color(0xFF2D2D2D)
+internal val DarkBackground = Color(0xFF1F1F1F)
+internal val DarkSurface = Color(0xFF121212)
+internal val DarkSurfaceVariant = Color(0xFF2D2D2D)
 
 // Text colors
-val LightOnBackground = Color(0xFF1F1F1F)
-val DarkOnBackground = Color(0xFFF8F9FA)
+internal val LightOnBackground = Color(0xFF1F1F1F)
+internal val DarkOnBackground = Color(0xFFF8F9FA)
 
 // Firebase AI Logic inspired light theme
-val FirebaseAILogicLightColors = lightColorScheme(
+internal val FirebaseAILogicLightColors = lightColorScheme(
     primary = FirebaseBlue,
     onPrimary = Color.White,
     primaryContainer = FirebaseLightBlue.copy(alpha = 0.15f),
@@ -53,7 +53,7 @@ val FirebaseAILogicLightColors = lightColorScheme(
 )
 
 // Firebase AI Logic inspired dark theme
-val FirebaseAILogicDarkColors = darkColorScheme(
+internal val FirebaseAILogicDarkColors = darkColorScheme(
     primary = FirebaseLightBlue,
     onPrimary = Color.White,
     primaryContainer = FirebaseBlue.copy(alpha = 0.25f),
