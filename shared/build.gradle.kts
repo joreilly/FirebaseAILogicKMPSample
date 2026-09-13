@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
-    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -26,14 +25,12 @@ kotlin {
         }
     }
 
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "ComposeApp"
-            isStatic = true
-        }
+    iosArm64()
+    iosSimulatorArm64()
+
+    swiftExport {
+        moduleName = "ComposeApp"
+        flattenPackage = "dev.johnoreilly.vertexai"
     }
 
     sourceSets {

@@ -53,7 +53,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun HomeScreen() {
+internal fun HomeScreen() {
     val viewModel = koinViewModel<GenerativeModelViewModel>()
 
     var prompt by rememberSaveable(stateSaver = TextFieldValue.Saver) {
@@ -152,7 +152,7 @@ fun HomeScreen() {
 }
 
 @Composable
-fun ResponseView(uiState: GenerativeModelUIState, prompt: String) {
+internal fun ResponseView(uiState: GenerativeModelUIState, prompt: String) {
     val scrollState = rememberScrollState()
 
     when (uiState) {
