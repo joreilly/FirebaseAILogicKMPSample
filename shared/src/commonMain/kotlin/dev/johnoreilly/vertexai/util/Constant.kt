@@ -1,4 +1,4 @@
 package dev.johnoreilly.vertexai.util
 
-const val GEMINI_MODEL = "gemini-2.5-flash"
-const val IMAGE_MODEL = "imagen-4.0-fast-generate-001"
+public const val GEMINI_MODEL: String = "gemini-2.5-flash"
+public const val IMAGE_MODEL: String = "imagen-4.0-fast-generate-001"

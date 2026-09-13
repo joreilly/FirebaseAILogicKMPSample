@@ -7,4 +7,4 @@ package dev.johnoreilly.vertexai
  * so a Swift implementation has to inherit from a Kotlin `open class` to be passed back
  * into Kotlin. See `GenerativeModelIOS` in the iOS app.
  */
-open class SwiftBase
+public open class SwiftBase

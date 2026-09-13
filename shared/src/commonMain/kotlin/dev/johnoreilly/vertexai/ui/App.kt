@@ -18,7 +18,7 @@ import dev.johnoreilly.vertexai.ui.theme.FirebaseAILogicTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun App() {
+public fun App() {
     FirebaseAILogicTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),

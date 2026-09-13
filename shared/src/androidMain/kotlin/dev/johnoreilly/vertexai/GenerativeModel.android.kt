@@ -10,7 +10,7 @@ import dev.johnoreilly.vertexai.util.GEMINI_MODEL
 import dev.johnoreilly.vertexai.util.IMAGE_MODEL
 
 
-class GenerativeModelAndroid : GenerativeModel {
+public class GenerativeModelAndroid : GenerativeModel {
     private val jsonSchema = Schema.array(
         Schema.obj(
             mapOf(
