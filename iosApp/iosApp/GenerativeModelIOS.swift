@@ -37,11 +37,16 @@ final class GenerativeModelIOS: ComposeApp.SwiftBase, ComposeApp.GenerativeModel
     }
 
     func generateImage(prompt: String) async throws -> ExportedKotlinPackages.kotlin.ByteArray? {
-        let model = ai.imagenModel(modelName: util.IMAGE_MODEL)
+        // Gemini image model asked for image output (matches Android, where Imagen was removed from
+        // firebase-ai); the picture arrives as an inline-data part alongside any text.
+        let model = ai.generativeModel(
+            modelName: util.IMAGE_MODEL,
+            generationConfig: GenerationConfig(responseModalities: [.text, .image])
+        )
 
-        let response = try await model.generateImages(prompt: prompt)
+        let response = try await model.generateContent(prompt)
 
-        guard let image = response.images.first else {
+        guard let image = response.inlineDataParts.first(where: { $0.mimeType.hasPrefix("image/") }) else {
           return nil
         }
 
