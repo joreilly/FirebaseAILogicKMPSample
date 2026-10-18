@@ -1,11 +1,11 @@
 package dev.johnoreilly.vertexai
 
 import com.google.firebase.Firebase
-import com.google.firebase.ai.type.PublicPreviewAPI
 import com.google.firebase.ai.type.Schema
 import com.google.firebase.ai.type.generationConfig
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
+import com.google.firebase.ai.type.ResponseModality
 import dev.johnoreilly.vertexai.util.GEMINI_MODEL
 import dev.johnoreilly.vertexai.util.IMAGE_MODEL
 
@@ -40,17 +40,18 @@ public class GenerativeModelAndroid : GenerativeModel {
         return generativeModel.generateContent(prompt).text
     }
 
-    @OptIn(PublicPreviewAPI::class)
+    // Imagen was removed from firebase-ai (17.17.0+), so images come from a Gemini image model asked
+    // for image output; the picture arrives as an inline-data part alongside any text.
     override suspend fun generateImage(prompt: String): ByteArray? {
-        val imageModel = Firebase.ai.imagenModel(
-            modelName = IMAGE_MODEL
+        val imageModel = Firebase.ai.generativeModel(
+            modelName = IMAGE_MODEL,
+            generationConfig = generationConfig {
+                responseModalities = listOf(ResponseModality.TEXT, ResponseModality.IMAGE)
+            }
         )
-        val imageResponse = imageModel.generateImages(prompt)
-        return if (imageResponse.images.isNotEmpty()) {
-            imageResponse.images.first().data
-        } else {
-            null
-        }
+        return imageModel.generateContent(prompt).inlineDataParts
+            .firstOrNull { it.mimeType.startsWith("image/") }
+            ?.inlineData
     }
 }
 
