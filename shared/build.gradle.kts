@@ -30,9 +30,13 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    swiftExport {
-        moduleName = "ComposeApp"
-        flattenPackage = "dev.johnoreilly.vertexai"
+    @OptIn(org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class)
+    export {
+        swift {
+            moduleName = "ComposeApp"
+            rootPackage = "dev.johnoreilly.vertexai"
+            xcodeIntegration()
+        }
     }
 
     sourceSets {
